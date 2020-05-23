@@ -11,7 +11,7 @@ const fs = require('fs');
 const request = https.get('https://en.wikipedia.org/wiki/Charlie_Brown;', res => {
     
 
-    let download = fs.createWriteStream('./Charlie_BBrown.html')
+    let download = fs.createWriteStream('./Charlie_Brown.html')
     // res.on('data', data => {
 
     //     console.log('---chunk---', data.length);

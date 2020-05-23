@@ -1,33 +1,37 @@
 const https = require('https');
 const fs = require('fs');
 
-const options = {
-    hostname: "en.wikipedia.org",
-    port: 443,
-    path: '/wiki/Snoppy',
-    method: 'GET'
-}
+// const options = {
+//     hostname: "en.wikipedia.org",
+//     port: 443,
+//     path: '/wiki/Snoppy',
+//     method: 'GET'
+// }
 
-const request = https.request(options, res => {
-    let responseBody= '';
+const request = https.get('https://en.wikipedia.org/wiki/Charlie_Brown;', res => {
+    
 
-    res.setEncoding("utf-8");
+    let download = fs.createWriteStream('./Charlie_BBrown.html')
+    // res.on('data', data => {
 
-    res.on('data', data => {
+    //     console.log('---chunk---', data.length);
 
-        console.log('---chunk---', data.length);
+    //     responseBody += data;
+    // })
 
-        responseBody += data;
-    })
+    res.pipe(download);
 
+    // res.on('end', () => {
+    //     fs.writeFile('./snoopy.html', responseBody, err => {
+
+    //         if (err) {
+    //             throw err
+    //         } 
+    //         console.log('file downloaded!')
+    //     })
+    // })
     res.on('end', () => {
-        fs.writeFile('./snoopy.html', responseBody, err => {
-
-            if (err) {
-                throw err
-            } 
-            console.log('file downloaded!')
-        })
+        console.log('Response Finished: wiki page downloaded ')
     })
 });
 

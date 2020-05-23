@@ -3,10 +3,24 @@ const http = require('http');
 http.createServer((req, res) => {
 
     res.writeHead(200, {
-        'Content-Type': 'text/plain'
+        'Content-Type': 'text/html'
     })
     
-    res.end('Hello World');
+    res.end(`
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title> Hello World!</title>
+        </head>
+        <body>
+            <h1> Hello World </h1>
+            <p> ${req.method} </p>
+            <p> ${req.url} </p>
+        </body>
+    
+    </html>
+
+    `);
 
 }).listen(3000);
 

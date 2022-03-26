@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/willy1669/Web_Server_Tests_and_Deployment#readme",
   "dependencies": {
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.6"
   }
 }
